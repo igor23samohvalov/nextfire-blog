@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.wrapper img {
+  border-radius: 30px;
+  object-fit: cover;
+  height: 45px;
+  width: auto;
+  margin-left: 10px;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
