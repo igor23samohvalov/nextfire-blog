@@ -7,7 +7,7 @@ export default function Navbar() {
   const { user, username } = useContext(UserContext);
 
   return (
-    <header>
+    <header style={{ backgroundColor: '#fff' }}>
       <div className="container">
         <div className={styles.wrapper}>
           <div>

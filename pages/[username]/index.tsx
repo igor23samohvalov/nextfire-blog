@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import UserProfile from '../../components/UserProfile';
 import PostFeed from '../../components/PostFeed';
 import styles from '../../styles/UsernameIndex.module.css';
-import { getUserWithUsername, postToJSON } from '../../lib/firebase';
+import { getUserWithUsername, postToJSON, firestore } from '../../lib/firebase';
 import {
   query,
   collection,
@@ -12,6 +12,8 @@ import {
   limit,
   orderBy,
   getDocs,
+  doc,
+  getDoc,
 } from 'firebase/firestore';
 
 export const getServerSideProps: GetServerSideProps = async ({ query: urlQuery }) => {
@@ -22,8 +24,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query: urlQuery }
   let user = null;
   let posts = null;
 
+  if (!userDoc) {
+    return {
+      notFound: true,
+    };
+  }
+
   if (userDoc) {
     user = userDoc.data();
+    console.log('userDoc ref', userDoc.ref.path)
     const postsQuery = query(
       collection(getFirestore(), userDoc.ref.path, 'posts'),
       where('published', '==', true),
@@ -39,6 +48,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: urlQuery }
 };
 
 export default function UserProfilePage({ user, posts }) {
+
   return (
     <main>
       <div className="container">

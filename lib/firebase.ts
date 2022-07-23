@@ -7,7 +7,6 @@ import {
   getDocs,
   query,
   limit,
-  doc,
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -39,7 +38,11 @@ export const storage = getStorage(firebaseApp);
 export const STATE_CHANGED = 'state_changed';
 
 export async function getUserWithUsername(username) {
-  const q = query(collection(firestore, 'users'), where('username', '==', username), limit(1));
+  const q = query(
+    collection(firestore, 'users'),
+    where('username', '==', username),
+    limit(1)
+  );
   const userDoc = (await getDocs(q)).docs[0];
 
   return userDoc;
@@ -47,7 +50,7 @@ export async function getUserWithUsername(username) {
 
 export function postToJSON(doc) {
   const data = doc.data();
-  console.log('post: ', data)
+
   return {
     ...data,
     createdAt: data?.createdAt.toMillis() || 0,

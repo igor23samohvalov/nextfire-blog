@@ -1,7 +1,7 @@
 export default interface IPost {
   content: string;
   createdAt: number;
-  hearCount: number;
+  heartCount: number;
   slug: string;
   title: string;
   uid: string;

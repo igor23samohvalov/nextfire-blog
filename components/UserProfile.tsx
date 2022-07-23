@@ -12,7 +12,7 @@ export default function UserProfile({ user }: UserProps) {
 
   return (
     <>
-      <img src={user.photoURL} alt="user photo"/>
+      <img src={user?.photoURL} alt="user photo"/>
       <h3>@{user.username}</h3>
       <i>{user.displayName}</i>
     </>
