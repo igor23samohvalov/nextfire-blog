@@ -1,21 +1,108 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  width: fit-content;
-  height: fit-content;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  background-color: #fff;
+.box {
+  background-color: rgba(0, 0, 0, 0.89);
+	border-radius: 3px;
+	padding: 70px 50px;
+  width: 70%;
 
-  .title {
-    align-self: center;
+  .textCenter {
+    color:#fff;	
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
   }
 
-  .titleInput {
-    padding: 10px 15px;
-    border-radius: 10px;
+  .inputContainer {
+    position: relative;
+    margin-bottom: 25px;
+
+    label {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      font-size: 16px;
+      color: #fff;	
+      pointer-events: none;
+      transition: all 0.5s ease-in-out;
+    }
+    
+    input { 
+      border: 0;
+      border-bottom: 1px solid #555;  
+      background: transparent;
+      width: 100%;
+      padding: 8px 0 5px 0;
+      font-size: 16px;
+      color: #fff;
+
+      &:focus {
+        border: none;	
+        outline: none;
+        border-bottom: 1px solid #e74c3c;
+
+        & + label {
+          top: -12px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .checkbox {
+    margin-bottom: 25px;
+    color: #fff;
+
+    input {
+      display: none;
+
+      &:hover + label {
+        &::before {
+          border: 1px solid #e74c3c;
+          width: 1.2em;
+          height: 1.2em;
+          border: 1px solid #fff;
+          background: #e74c3c;
+          box-shadow: 0 0 0 1px #000;
+        }
+      }
+      &:checked + label {
+        &:before {
+          border-radius: 1em;
+          border: 1px solid #fff;
+          width: 1.2em;
+          height: 1.2em;
+          background: #e74c3c;
+          box-shadow: 0 0 0 1px #000;
+          -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+        }
+      }
+    }
+    label {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 1.2em;
+        height: 1.2em;
+        border: 1px solid #343a3f;
+        border-radius: 1em;
+        position: absolute;
+        left: 0;
+        top: 0;
+        -webkit-transition: all 0.2s, transform 0.3s ease-in-out;
+        transition: all 0.2s, transform 0.3s ease-in-out;
+        background: #f3f3f3;
+      }
+    }
   }
 }
-

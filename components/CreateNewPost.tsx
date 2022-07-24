@@ -53,23 +53,28 @@ export default function CreateNewPost() {
   return (
     <div>
       <h3>Manage your Posts</h3>
-      <form onSubmit={createPost} className={styles.form}>
-        <h4 className={styles.title}>New Post:</h4>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="My Awesome Article!"
-          className={styles.titleInput}
-        />
-        <label htmlFor="published">Published:</label>
-        <input type="checkbox" name="published" />
-        <p>
-          <strong>Slug:</strong> {slug}
-        </p>
-        <button type="submit" disabled={!isValid} className="custom-btn btn-green">
-          Create New Post
-        </button>
-      </form>
+      <div className={styles.box}>
+        <form onSubmit={createPost}>
+          <span className={styles.textCenter}>New Post</span>
+          <div className={styles.inputContainer}>
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className={styles.titleInput}
+              id="postTitle"
+            />
+            <label htmlFor="postTitle">Post Title</label>
+          </div>
+          <div className={styles.checkbox}>
+            <input type="checkbox" name="published" id="published" />
+            <label htmlFor="published">Published</label>
+          </div>
+          <button type="submit" disabled={!isValid} className="custom-btn btn-orange">
+            Create New Post
+          </button>
+        </form>
+      </div>
+      
     </div>
     
   );

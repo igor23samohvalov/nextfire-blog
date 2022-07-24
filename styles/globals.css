@@ -134,5 +134,14 @@ button {
 
 .btn-white:after {
   background-color: #000;
+}
 
+.btn-orange {
+  background-color: #e74c3c;
+  font-weight: bold;
+}
+
+.btn-orange:hover {
+  color: #e74c3c;
+  font-weight: bold;
 }
