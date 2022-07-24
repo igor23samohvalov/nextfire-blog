@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from '../styles/Navbar.module.css';
 import { useContext } from 'react';
 import { UserContext } from '../lib/userContext';
+import SignOutButton from './SignOutButton';
 
 export default function Navbar() {
   const { user, username } = useContext(UserContext);
@@ -12,25 +13,25 @@ export default function Navbar() {
         <div className={styles.wrapper}>
           <div>
             <Link href="/">
-              <button className="btn-blue">FEED</button>
+              <button className="custom-btn">FEED</button>
             </Link>
           </div>
           <div className={styles.profileContainer}>
+            {!user
+              ? (<Link href="/enter">
+                  <button className="custom-btn">Log In</button>
+                </Link>)
+              : (<SignOutButton />)
+            }
             {username && (
               <>
                 <Link href="/admin">
-                  <button>Write Posts</button>
+                  <button className="custom-btn">Write Post</button>
                 </Link>
                 <Link href={`/${username}`}>
                   <img src={user.photoURL} />
                 </Link>
               </>
-            )}
-
-            {!username && (
-              <Link href="/enter">
-                <button className="btn-blue">Log In</button>
-              </Link>
             )}
           </div>
         </div>

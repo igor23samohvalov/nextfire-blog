@@ -16,4 +16,9 @@
 .profileContainer {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.profileContainer > * {
+  margin-left: 10px;
 }

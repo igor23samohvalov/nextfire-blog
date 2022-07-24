@@ -12,12 +12,15 @@ export default function EnterPage({}) {
     <main>
       <div className="container">
         <div className={styles.wrapper}>
-          {
-            user ?
-              !username ? <UsernameForm /> : <SignOutButton />
-            :
-              <SignInButton />
-          }
+          <div className={styles.enterCard}>
+            {
+              user ?
+                !username ? <UsernameForm /> : <SignOutButton />
+              :
+                <SignInButton />
+            }
+          </div>
+
         </div>
       </div>
     </main>

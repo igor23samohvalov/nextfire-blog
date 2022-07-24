@@ -8,6 +8,7 @@ import { firestore } from '../lib/firebase';
 import { doc, getDoc, writeBatch } from 'firebase/firestore';
 import debounce from 'lodash/debounce';
 import { UserContext } from '../lib/userContext';
+import styles from '../styles/UsernameForm.module.scss';
 
 export default function UsernameForm() {
   const { user, username } = useContext(UserContext);
@@ -27,7 +28,7 @@ export default function UsernameForm() {
       }
     }, 500),
     []
-  )
+  );
 
   useEffect(() => {
     checkUsername(value);
@@ -70,18 +71,28 @@ export default function UsernameForm() {
           placeholder="Enter username"
           name="username"
           onChange={handleChange}
+          className={styles.usernameInput}
         />
-        <button type="submit" disabled={!isValid}>
+        <button
+          type="submit"
+          disabled={!isValid}
+          className="custom-btn btn-green"
+          style={{ border: 'none' }}
+        >
           Submit
         </button>
       </form>
       <h3>Debug state:</h3>
-      <div>
+      <div className={styles.badge} style={{ backgroundColor: '#333' }}>
         Username: {value}
-        <br />
-        Loading: {isLoading.toString()}
-        <br />
-        Valid: {isValid.toString()}
+      </div>
+      <div>
+        <div className={styles.badge} style={{ backgroundColor: `${isLoading ? '#21bd55' : '#df3b3b'}`}}>
+          Loading: {isLoading.toString()}          
+        </div>
+        <div className={styles.badge} style={{ backgroundColor: `${isValid ? '#21bd55' : '#df3b3b'}`}}>
+          Valid: {isValid.toString()}
+        </div>
       </div>
     </>
   );

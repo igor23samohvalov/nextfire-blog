@@ -5,7 +5,7 @@
   --color-text: #08090a;
   --color-blue: #3b49df;
   --color-red: #df3b3b;
-  --color-green: #3bdf72;
+  --color-green: #21bd55;
   --color-gray: #b5bdc4;
   --color-white: #fff;
 }
@@ -65,7 +65,74 @@ button {
   color: var(--color-white);
 }
 
+.custom-btn {
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #38363b;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  z-index: 1;
+}
+
+.custom-btn:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+.custom-btn:hover {
+  color: #000;
+}
+.custom-btn:hover:after {
+  top: 0;
+  height: 100%;
+}
+.custom-btn:active {
+  top: 2px;
+}
+
+.btn-grey {
+  background-color: var(--color-gray);
+  border: 2px solid var(--color-gray);
+}
+
 .btn-green {
   background-color: var(--color-green);
+  border: 2px solid var(--color-green);
+  font-weight: bold;
+}
+
+.btn-green:hover {
+  color: var(--color-green);
+}
+
+.btn-green:disabled {
+  opacity: 0.5;
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  color: #333;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-white:hover {
   color: var(--color-white);
+}
+
+.btn-white:after {
+  background-color: #000;
+
 }
