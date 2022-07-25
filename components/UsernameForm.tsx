@@ -9,6 +9,7 @@ import { doc, getDoc, writeBatch } from 'firebase/firestore';
 import debounce from 'lodash/debounce';
 import { UserContext } from '../lib/userContext';
 import styles from '../styles/UsernameForm.module.scss';
+import Loader from './Loader';
 
 export default function UsernameForm() {
   const { user, username } = useContext(UserContext);
@@ -63,37 +64,39 @@ export default function UsernameForm() {
   };
 
   return (
-    <>
+    <div className={styles.box}>
       <form onSubmit={handleSubmit}>
-        <h3>Choose Username:</h3>
-        <input
-          type="text"
-          placeholder="Enter username"
-          name="username"
-          onChange={handleChange}
-          className={styles.usernameInput}
-        />
+        <span className={styles.textCenter}>Pick Username</span>
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            name="username"
+            onChange={handleChange}
+            id="username"
+          />
+          <label htmlFor="username">Enter Username</label>
+        </div>
         <button
           type="submit"
           disabled={!isValid}
-          className="custom-btn btn-green"
-          style={{ border: 'none' }}
+          className="custom-btn btn-orange"
         >
-          Submit
+          {isLoading ? <Loader show /> : "Submit"}
         </button>
+        <span
+          className={styles.textCenter}
+          style={{ margin: '20px 0 15px 0' }}
+        >Debug state:</span>
+        <div className={styles.badge} style={{ backgroundColor: '#333' }}>
+          Username: {value}
+        </div>
+        <div>
+          <div className={styles.badge} style={{ backgroundColor: `${isValid ? '#21bd55' : '#df3b3b'}`}}>
+            Valid: {isValid.toString()}
+          </div>
+        </div>
       </form>
-      <h3>Debug state:</h3>
-      <div className={styles.badge} style={{ backgroundColor: '#333' }}>
-        Username: {value}
-      </div>
-      <div>
-        <div className={styles.badge} style={{ backgroundColor: `${isLoading ? '#21bd55' : '#df3b3b'}`}}>
-          Loading: {isLoading.toString()}          
-        </div>
-        <div className={styles.badge} style={{ backgroundColor: `${isValid ? '#21bd55' : '#df3b3b'}`}}>
-          Valid: {isValid.toString()}
-        </div>
-      </div>
-    </>
+      
+    </div>
   );
 };

@@ -1,6 +1,64 @@
-.usernameInput {
-  margin-right: 10px;
+.box {
+  background-color: rgba(0, 0, 0, 0.89);
+	border-radius: 3px;
+	padding: 70px 50px;
+  width: 350px;
+
+  form {
+    .textCenter {
+      color:#fff;	
+      text-transform: uppercase;
+      font-size: 23px;
+      margin: -50px 0 80px 0;
+      display: block;
+      text-align: center;
+    }
+  
+    .inputContainer {
+      position: relative;
+      margin-bottom: 25px;
+  
+      label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 16px;
+        color: #fff;	
+        pointer-events: none;
+        transition: all 0.5s ease-in-out;
+      }
+      
+      input { 
+        border: 0;
+        border-bottom: 1px solid #555;  
+        background: transparent;
+        width: 100%;
+        padding: 8px 0 5px 0;
+        font-size: 16px;
+        color: #fff;
+  
+        &:focus {
+          border: none;	
+          outline: none;
+          border-bottom: 1px solid #e74c3c;
+  
+          & + label {
+            top: -12px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    button {
+      width: 100px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+ 
 }
+
 
 .badgeContainer {
   display: flex;
